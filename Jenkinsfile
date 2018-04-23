@@ -12,7 +12,7 @@ INTFTYPE=eth '''
     stage('stage-1') {
       steps {
         echo 'Hello world!'
-        sh '/sbin/init'
+        sh 'docker run ceos-lab /sbin/init'
       }
     }
   }
