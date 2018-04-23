@@ -1,14 +1,17 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'us.gcr.io/fred-hsu-veos/ceos-lab'
+      args '''--name=ceos --privileged -p 443:443 -e CEOS=1 -e container=docker
+-e EOS_PLATFORM=Docker -e SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT=1 -e ETBA=1 -e
+INTFTYPE=eth -it ceosimage:latest /sbin/init'''
+    }
+
+  }
   stages {
     stage('stage-1') {
       steps {
         echo 'Hello world!'
-      }
-    }
-    stage('run ceos') {
-      steps {
-        sh 'gcloud docker -- pull us.gcr.io/fred-hsu-veos/ceos-lab:latest'
       }
     }
   }
