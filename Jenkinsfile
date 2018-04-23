@@ -4,7 +4,7 @@ pipeline {
       image 'us.gcr.io/fred-hsu-veos/ceos-lab'
       args '''--name=ceos --privileged -p 443:443 -e CEOS=1 -e container=docker
 -e EOS_PLATFORM=Docker -e SKIP_ZEROTOUCH_BARRIER_IN_SYSDBINIT=1 -e ETBA=1 -e
-INTFTYPE=eth -it ceosimage:latest /sbin/init'''
+INTFTYPE=eth /sbin/init'''
     }
 
   }
