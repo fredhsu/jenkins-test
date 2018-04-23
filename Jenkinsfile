@@ -12,6 +12,7 @@ INTFTYPE=eth '''
     stage('stage-1') {
       steps {
         echo 'Hello world!'
+        sh '/sbin/init'
       }
     }
   }
